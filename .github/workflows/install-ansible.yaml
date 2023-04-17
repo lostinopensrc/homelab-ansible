@@ -1,0 +1,22 @@
+name: Install Ansible
+
+on:
+  workflow_dispatch:
+  
+env:
+  appVersion: v2.6.7
+
+jobs:
+  deploy:
+    runs-on: homelab-ansible-runner
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install Ansible
+      run: |
+        sudo su -
+        apt install software-properties-common
+        add-apt-repository --yes --update ppa:ansible/ansible
+        apt install ansible
