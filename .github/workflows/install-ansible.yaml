@@ -2,6 +2,9 @@ name: Install Ansible
 
 on:
   workflow_dispatch:
+
+env:
+  ROOT_PASS: ${{ secrets.PASSWORD }}
   
 jobs:
   deploy:
@@ -13,7 +16,7 @@ jobs:
 
     - name: Install Ansible
       run: |
-        sudo -S su -
+        echo "$ROOT_PASS" | sudo -S su -
         apt install software-properties-common --yes
         add-apt-repository --yes --update ppa:ansible/ansible 
         apt install ansible --yes
