@@ -3,9 +3,6 @@ name: Install Ansible
 on:
   workflow_dispatch:
   
-env:
-  appVersion: v2.6.7
-
 jobs:
   deploy:
     runs-on: homelab-ansible-runner
