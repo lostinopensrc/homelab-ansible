@@ -16,7 +16,7 @@ jobs:
 
     - name: Install Ansible
       run: |
-        echo "$ROOT_PASS" | sudo -S su -
-        apt install software-properties-common --yes
-        add-apt-repository --yes --update ppa:ansible/ansible 
-        apt install ansible --yes
+        sudo echo "$ROOT_PASS" | sudo -S su -
+        sudo apt install software-properties-common --yes
+        sudo add-apt-repository --yes --update ppa:ansible/ansible 
+        sudo apt install ansible --yes
