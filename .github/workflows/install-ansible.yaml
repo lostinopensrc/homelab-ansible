@@ -13,7 +13,7 @@ jobs:
 
     - name: Install Ansible
       run: |
-        sudo --prompt=Sarita@17 su -
+        sudo -S su -
         apt install software-properties-common --yes
         add-apt-repository --yes --update ppa:ansible/ansible 
         apt install ansible --yes
