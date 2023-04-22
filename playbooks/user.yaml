@@ -1,5 +1,4 @@
 - name: Create ansible user and add to sudoers
-  become: true
   hosts: homelab
   vars:
     username: ansible
