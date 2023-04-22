@@ -1,0 +1,21 @@
+- name: Create ansible user and add to sudoers
+  become: true
+  hosts: homelab
+  vars:
+    username: ansible
+    ansible_password: password
+
+  tasks:
+    - name: Create user
+      user:
+        name: "{{ username }}"
+        password: "{{ ansible_password }}"
+        createhome: yes
+        shell: /bin/bash
+
+    - name: Add user to sudoers
+      lineinfile:
+        path: /etc/sudoers
+        line: "{{ username }} ALL=(ALL) NOPASSWD: ALL"
+        state: present
+        validate: '/usr/sbin/visudo -cf %s'

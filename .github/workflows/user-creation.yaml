@@ -1,0 +1,16 @@
+name: Ansible User Creation
+
+on:
+  workflow_dispatch:
+  
+jobs:
+  deploy:
+    runs-on: homelab-ansible-runner
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Run User Creation Playbook
+      run: |
+        ansible-playbook playbooks/user.yml -i inventory/homelab
