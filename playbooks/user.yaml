@@ -3,6 +3,7 @@
   vars:
     username: ansible
     encrypted_password: password
+    ansible_become: true
     ansible_become_password: Sarita@17
     ansible_become_user: lostinopensrc
 
