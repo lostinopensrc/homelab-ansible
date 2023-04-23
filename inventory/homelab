@@ -1,2 +1,2 @@
 [homelab]
-localhost ansible_user=root ansible_password=password
+localhost ansible_user=lostinopensrc ansible_password=Sarita@17
