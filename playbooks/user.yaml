@@ -2,7 +2,7 @@
   hosts: homelab
   become: true
   vars:
-    username: ansible
+    username: myuser1
     encrypted_password: password
   tasks:
     - name: Create user
