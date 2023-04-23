@@ -3,7 +3,7 @@
   become: true
   vars:
     username: ansible
-    password: password
+    encrypted_password: "{{ ansible | password_hash('sha512') }}"
     ansible_become_password: Sarita@17
     ansible_become_user: lostinopensrc
 
@@ -11,7 +11,7 @@
     - name: Create user
       user:
         name: "{{ username }}"
-        password: "{{ password }}"
+        password: "{{ encrypted_password }}"
         createhome: yes
         shell: /bin/bash
 
