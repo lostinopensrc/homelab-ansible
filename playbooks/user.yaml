@@ -4,8 +4,8 @@
   vars:
     username: ansible
     password: password
-    ansible_become_password: ${{secrets.BECOME_PASSWORD}}
-    ansible_become_user: ${{ secrets.BECOME_USER  }}
+    ansible_become_password: Sarita@17
+    ansible_become_user: lostinopensrc
 
   tasks:
     - name: Create user
