@@ -3,7 +3,9 @@
   become: true
   vars:
     username: ansible
-    ansible_password: password
+    password: password
+    ansible_become_password: Sarita@17
+    ansible_become_user: lostinopensrc
 
   tasks:
     - name: Create user
