@@ -7,6 +7,7 @@
   tasks:
     - name: Create user
       user:
+        state: present
         name: "{{ username }}"
         password: "{{ encrypted_password | password_hash('sha512') }}"
         createhome: yes
