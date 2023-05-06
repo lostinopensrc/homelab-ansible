@@ -2,7 +2,10 @@ name: Ansible User Creation
 
 on:
   workflow_dispatch:
-  
+  push:
+    branches:
+      - 'main'
+      
 jobs:
   deploy:
     runs-on: homelab-ansible-runner
