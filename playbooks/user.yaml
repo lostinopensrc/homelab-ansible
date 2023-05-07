@@ -10,7 +10,7 @@
         state: present
         update_password: always
         name: "{{ item }}"
-        password: "{{ lookup('file', 'group_vars/all/passwords/' + item) | password_hash('sha512') }}"
+        password: "{{ lookup('file', '../group_vars/all/passwords/' + item) | password_hash('sha512') }}"
         createhome: yes
         shell: /bin/bash
       loop: "{{ users }}"
