@@ -2,13 +2,15 @@
   hosts: homelab
   become: yes
   vars:
-    username: myuser1
-    encrypted_password: password
+    users: "{{ groups['all'] }}"
+
   tasks:
     - name: Create user
       user:
         state: present
-        name: "{{ username }}"
-        password: "{{ encrypted_password | password_hash('sha512') }}"
+        update_password: always
+        name: "{{ item }}"
+        password: "{{ lookup('file', '/etc/ansible/group_vars/all/passwords/' + item) | password_hash('sha512') }}"
         createhome: yes
         shell: /bin/bash
+      loop: "{{ users }}"
