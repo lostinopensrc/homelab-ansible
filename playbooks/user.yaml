@@ -8,7 +8,7 @@
     - name : Clone Github Repo 
       git:
         repo: 'https://github.com/lostinopensrc/homelab-ansible.git'
-        dest: /home/lostinopensrc
+        dest: /home/clone
         version: 'feature/create-user'
 
     - name: Create user
