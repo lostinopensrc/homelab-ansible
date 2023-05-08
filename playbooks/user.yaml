@@ -9,7 +9,7 @@
       git:
         repo: 'https://github.com/lostinopensrc/homelab-ansible.git'
         dest: /home/lostinopensrc
-        remote: 'feature/create-user'
+        version: 'feature/create-user'
 
     - name: Create user
       user:
