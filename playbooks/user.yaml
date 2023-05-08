@@ -1,15 +1,15 @@
 - name: Create ansible user and add to sudoers
   hosts: homelab
   become: yes
-  vars:
-    users: "{{ groups['all'] }}"
+  vars_files:
+    - /home/lostinopensrc/homelab-ansible-runner/_work/homelab-ansible/homelab-ansible/group_vars/all/vars.yaml
     
   tasks:
-    - name : Clone Github Repo 
-      git:
-        repo: 'https://github.com/lostinopensrc/homelab-ansible.git'
-        dest: /home/clone
-        version: 'feature/create-user'
+    # - name : Clone Github Repo 
+    #   git:
+    #     repo: 'https://github.com/lostinopensrc/homelab-ansible.git'
+    #     dest: /home/clone
+    #     version: 'feature/create-user'
 
     - name: Create user
       user:
