@@ -1,14 +1,22 @@
 - name: Create ansible user and add to sudoers
   hosts: homelab
   become: yes
-  vars:
-    username: myuser1
-    encrypted_password: password
+  vars_files:
+    - /home/lostinopensrc/homelab-ansible-runner/_work/homelab-ansible/homelab-ansible/group_vars/all/vars.yaml
+    
   tasks:
+    # - name : Clone Github Repo 
+    #   git:
+    #     repo: 'https://github.com/lostinopensrc/homelab-ansible.git'
+    #     dest: /home/clone
+    #     version: 'feature/create-user'
+
     - name: Create user
       user:
         state: present
-        name: "{{ username }}"
-        password: "{{ encrypted_password | password_hash('sha512') }}"
+        update_password: always
+        name: "{{ item }}"
+        password: "{{ lookup('file', '/home/lostinopensrc/homelab-ansible-runner/_work/homelab-ansible/homelab-ansible/group_vars/all/passwords/' + item) | password_hash('sha512') }}"
         createhome: yes
         shell: /bin/bash
+      loop: "{{ users }}"

@@ -2,7 +2,8 @@ name: Ansible User Creation
 
 on:
   workflow_dispatch:
-  push:
+
+  pull_request:
     branches:
       - 'main'
       
@@ -16,4 +17,4 @@ jobs:
 
     - name: Run User Creation Playbook
       run: |
-        ansible-playbook playbooks/user.yaml -i inventory/homelab
+        ansible-playbook playbooks/user.yaml -i inventory/homelab -vvv
