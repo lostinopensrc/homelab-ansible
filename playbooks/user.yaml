@@ -1,9 +1,9 @@
 - name: Create ansible user and add to sudoers
   hosts: homelab
   become: yes
-  vars:
-    users: "{{ groups['all'] }}"
-
+  vars_files:
+    - group_vars/all/vars.yaml
+    
   tasks:
     - name : Clone Github Repo 
       git:
