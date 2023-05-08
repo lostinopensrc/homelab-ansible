@@ -6,6 +6,8 @@ on:
   pull_request:
     branches:
       - 'main'
+    paths:
+      - 'group_vars/create/vars.yaml'
       
 jobs:
   deploy:
