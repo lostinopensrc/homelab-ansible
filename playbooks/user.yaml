@@ -16,7 +16,7 @@
         state: present
         update_password: always
         name: "{{ item }}"
-        password: "{{ lookup('file', '/home/lostinopensrc/homelab-ansible/group_vars/all/passwords/' + item) | password_hash('sha512') }}"
+        password: "{{ lookup('file', '/home/clone/group_vars/all/passwords/' + item) | password_hash('sha512') }}"
         createhome: yes
         shell: /bin/bash
       loop: "{{ users }}"
