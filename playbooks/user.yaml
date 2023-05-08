@@ -5,12 +5,18 @@
     users: "{{ groups['all'] }}"
 
   tasks:
+    - name : Clone Github Repo 
+      git:
+        repo: 'https://github.com/lostinopensrc/homelab-ansible.git'
+        dest: /home/lostinopensrc
+        remote: 'feature/create-user'
+
     - name: Create user
       user:
         state: present
         update_password: always
         name: "{{ item }}"
-        password: "{{ lookup('file', '/home/lostinopensrc/homelab-ansible-runner/_work/homelab-ansible/homelab-ansible/group_vars/all/passwords/' + item) | password_hash('sha512') }}"
+        password: "{{ lookup('file', '/home/lostinopensrc/homelab-ansible/group_vars/all/passwords/' + item) | password_hash('sha512') }}"
         createhome: yes
         shell: /bin/bash
       loop: "{{ users }}"
